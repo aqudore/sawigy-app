@@ -1,11 +1,10 @@
-import React from "react";
 import Nav from './component/Nav';
 import Body from './component/body';
 
 function App() {
   return (
 
-    <><Nav /> 
+   <><Nav/>
     <Body /></>
   );
 }

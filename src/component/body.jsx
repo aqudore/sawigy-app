@@ -1,6 +1,27 @@
-import React,{ useEffect,useState}from "react";
+import {useEffect,useState} from "react";
+import OnmyMind from "./Onmy mind";
+import Topresurent from "./Topresurant";
 
-const data = {
+
+
+
+
+
+
+function Body() {
+
+  
+    const [mindData, setMindData] = useState([]);
+    const [restaurantData, setRestaurantData] = useState([]);
+    
+    
+      
+
+
+    async function Data()
+ {
+    const responseData = 
+    {
   "statusCode": 0,
   "data": {
     "statusMessage": "done successfully",
@@ -7741,33 +7762,42 @@ const data = {
   "sid": "s0lb0625155-de5b-4a09-b60b-17348e040",
   "deviceId": "7bd33374-1b6a-7417-6f6c-25176aa590ab",
   "csrfToken": "1LOcuEcNJBd8-ZxKaQB1Hkfk0305p0xyy8bdN324"
-}
+   }
+  //
+   const onMyMindItems = responseData?.data?.cards[0]?.card?.card?.imageGridCards?.info || [];
+   const restaurantItems = responseData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants || [];
 
-function Body() {
+   setMindData(onMyMindItems);
+   setRestaurantData(restaurantItems);
 
-    const [data, setData] = useState([]);
+  }
 
-    async function  () {
+   useEffect(() => {
+    (async () => {
+      await Data();
+     
       
-            console.log(result);
-            
-      
-    }
-     useEffect(() => {
-        fetchData();
-    }, []);
+    })();
+  }, []);
 
-   
-    
 
 
 
    return (
-    <div className="w-full">
-      <div className="bg-gray-100 p-4 w-[80%] mx-auto">
-        {/* restored content area */}
-      </div>
-    </div>
+
+ 
+     
+    
+     <div>      
+       <OnmyMind  data={mindData} />
+       <Topresurent data={restaurantData} />
+       <resturantcard data={restaurantData} />
+
+
+     </div>
+    
+
+  
   );
 }
 
