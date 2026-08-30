@@ -42,9 +42,13 @@ function OnmyMind({ data }) {
           {data.map((item) => (
             <img
               key={item.id}
-              className="w-30 "
+              className="w-30 cursor-pointer"
               src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_288,h_360/${item.imageId}`}
               alt={item.action?.text || item.id}
+              onClick={() => {
+                console.log("Image ID:", item.id);
+                console.log("Full Item:", item);
+              }}
             />
           ))}
         </div>
